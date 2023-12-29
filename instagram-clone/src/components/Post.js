@@ -132,11 +132,11 @@ function PostFooter({ post }) {
       >
         View all {post.comments} comments.
       </Typography>
-     
+
       <TextField fullWidth variant="standard" placeholder="Add a comment..." style={{
         padding: "0rem .5rem",
         marginBottom: "1rem"
-      }}/>
+      }} />
     </div>
   );
 }

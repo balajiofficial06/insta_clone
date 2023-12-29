@@ -3,6 +3,7 @@ const config = require('./config')
 const app = require("./app")
 
 
+
 app.listen(config.port, () => {
     mongoose.connect(config.mongoUrl).then(() => {
         console.log("database is conneted")
@@ -10,5 +11,5 @@ app.listen(config.port, () => {
         .catch((err) => {
             console.log(err)
         })
-    console.log("sever is runing")
+    console.log("sever is runing on " + config.port)
 })
