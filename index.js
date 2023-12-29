@@ -22,3 +22,5 @@ const app = express()
 app.use(cors())
 
 app.get('/', getPost)
+
+module.exports = app;
