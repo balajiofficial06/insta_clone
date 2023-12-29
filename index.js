@@ -4,7 +4,7 @@ const app = require("./app")
 
 
 
-app.listen(config.port, () => {
+app.listen(() => {
     mongoose.connect(config.mongoUrl).then(() => {
         console.log("database is conneted")
     })
