@@ -1,15 +1,24 @@
 const mongoose = require('mongoose')
 const config = require('./config')
-const app = require("./app")
+const express = require("express")
+const { getPost } = require("./controlers/posts")
+const cors = require("cors")
 
 
 
-app.listen(() => {
-    mongoose.connect(config.mongoUrl).then(() => {
-        console.log("database is conneted")
-    })
-        .catch((err) => {
-            console.log(err)
-        })
-    console.log("sever is runing on " + config.port)
+mongoose.connect(config.mongoUrl).then(() => {
+    console.log("database is conneted")
 })
+    .catch((err) => {
+        console.log(err)
+    })
+
+
+
+
+
+const app = express()
+
+app.use(cors())
+
+app.get('/', getPost)
