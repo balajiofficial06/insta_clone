@@ -6,6 +6,8 @@ import InfiniteScroll from "react-infinite-scroll-component"
 
 import axios from "axios"
 
+
+
 const HomepageWrapper = styled('div')(({ theme }) => ({
   display: "flex",
   height: "100vh",
@@ -18,6 +20,7 @@ const HomepageWrapper = styled('div')(({ theme }) => ({
 
 
 export default function HomePage() {
+  const apiUrl = process.env.REACT_APP_API_URL
 
   const [items, setItems] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -28,10 +31,10 @@ export default function HomePage() {
 
     // setItems(samplePost.slice(0, 2))
     axios
-      .get("http://127.0.0.1:5000/?pageNumber=1")
+      .get(apiUrl + "?pageNumber=1")
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [apiUrl]);
 
 
   const fetchMoreData = () => {
@@ -39,7 +42,7 @@ export default function HomePage() {
     // const newValue = samplePost.slice(index * 2, index * 2 + 2)
     // setItems(prev => [...prev, ...newValue])
     axios
-      .get(`http://127.0.0.1:5000/?pageNumber=${index + 1}`)
+      .get(apiUrl + `?pageNumber=${index + 1}`)
       .then((res) => {
         setItems((prevItems) => [...prevItems, ...res.data]);
         setIndex((prevIndex) => prevIndex + 1);
