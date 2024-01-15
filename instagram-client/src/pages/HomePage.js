@@ -28,7 +28,7 @@ export default function HomePage() {
 
     // setItems(samplePost.slice(0, 2))
     axios
-      .get("http://127.0.0.1:5000/?pageNumnber=1")
+      .get("http://127.0.0.1:5000/?pageNumber=1")
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -39,7 +39,7 @@ export default function HomePage() {
     // const newValue = samplePost.slice(index * 2, index * 2 + 2)
     // setItems(prev => [...prev, ...newValue])
     axios
-      .get(`http://127.0.0.1:5000/?pageNumnber=${index + 1}`)
+      .get(`http://127.0.0.1:5000/?pageNumber=${index + 1}`)
       .then((res) => {
         setItems((prevItems) => [...prevItems, ...res.data]);
         setIndex((prevIndex) => prevIndex + 1);
