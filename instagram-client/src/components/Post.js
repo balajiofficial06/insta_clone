@@ -1,26 +1,35 @@
-import { Avatar, IconButton, TextField, Typography } from "@mui/material";
+import { Avatar, IconButton, TextField, Typography, styled } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubble";
 import SendIcon from "@mui/icons-material/Send";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
+
 export default function Post({ post }) {
+
+  const PostDiv = styled('div')(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    border: "1px solid #ccc",
+    borderRadius: "1rem",
+    margin: "1rem",
+    width: "500px",
+    [theme.breakpoints.down('md')]: {
+      width: "400px"
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: "350px"
+    }
+
+  }))
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        border: "1px solid #ccc",
-        borderRadius: "1rem",
-        margin: "1rem",
-        width: "500px",
-      }}
-    >
+    <PostDiv>
+
       <PostHeader post={post} />
       <PostBody post={post} />
       <PostFooter post={post} />
-    </div>
+    </PostDiv>
   );
 }
 
@@ -133,9 +142,9 @@ function PostFooter({ post }) {
         View all {post.comments} comments.
       </Typography>
 
-      <TextField fullWidth variant="standard" placeholder="Add a comment..." style={{
+      <TextField size="medium" variant="standard" placeholder="Add a comment..." style={{
         padding: "0rem .5rem",
-        marginBottom: "1rem"
+        marginBottom: "1rem",
       }} />
     </div>
   );
